@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "lib": [
+      "es2015",
+      "es2017",
+      "dom"
+    ],
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "strictFunctionTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
