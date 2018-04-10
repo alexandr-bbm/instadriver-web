@@ -6,7 +6,7 @@ import {
   ILoginUserResponseData,
   IRegisterUserRequestData,
   IRegisterUserResponseData,
-} from '../../services/pollAppApi/interface';
+} from '../../services/instadriverApi/interface';
 import {IUser} from './interface';
 import {defaultErrorHandler} from '../../utils/defaultErrorHandler';
 

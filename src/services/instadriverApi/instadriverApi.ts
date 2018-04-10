@@ -8,14 +8,18 @@ import {
 import { IRemovePollActionPayload } from '../../redux/polls/actions';
 import { BrowserStorage } from '../browserStorage/browserStorage';
 import {API_URL} from '../../utils/routes-config';
+import * as firebase from 'firebase';
+import {FireBase} from '../../redux/types';
 
-export class PollAppApi {
+export class InstadriverApi {
 
   private storage: BrowserStorage;
   private axios: AxiosInstance;
+  private firebase: FireBase;
 
-  public constructor(store: BrowserStorage) {
+  public constructor(store: BrowserStorage, firebase: FireBase) {
     this.storage = store;
+    this.firebase = firebase;
     this.axios = axios.create({
       baseURL: API_URL,
       timeout: 5000,
@@ -24,21 +28,12 @@ export class PollAppApi {
   }
 
   public loginUser(data: ILoginUserRequestData) {
-    return this.axios.post<ILoginUserResponseData>(`/appUsers/login?include=user`, data)
-      .then((response) => {
-        const {data: {id: accessToken}} = response;
-        this.storage.setAccessToken(accessToken);
-        this.setAuthHeader(accessToken);
-        return response;
-      });
+    const {email, password} = data;
+    return this.firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
   public logoutUser() {
-    return this.axios.post(`/appUsers/logout`)
-      .then((response) => {
-        this.clearAccessToken();
-        return response;
-      });
+    return this.firebase.auth().signOut()
   }
 
   public getCurrentUser() {
@@ -52,7 +47,8 @@ export class PollAppApi {
   }
 
   public registerUser(data: IRegisterUserRequestData) {
-    return this.axios.post<IRegisterUserResponseData>(`/appUsers`, data);
+    const {email, password} = data;
+    return this.firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
   public loadPolls() {

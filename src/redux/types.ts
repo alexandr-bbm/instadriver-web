@@ -1,8 +1,8 @@
-import { Dispatch, DispatchProp } from 'react-redux';
+import { DispatchProp } from 'react-redux';
 import { IUserStore } from './user/interface';
 import { IPollsStore } from './polls/interface';
 import { IModalsStore } from './modals/interface';
-import { PollAppApi } from '../services/pollAppApi/pollAppApi';
+import { InstadriverApi } from '../services/instadriverApi/instadriverApi';
 import { BrowserStorage } from '../services/browserStorage/browserStorage';
 import { ThunkAction as ThunkActionCommon } from 'redux-thunk';
 import * as firebase from 'firebase';
@@ -13,10 +13,12 @@ export interface IStore {
   modals: IModalsStore;
 }
 
+export type FireBase = typeof firebase;
+
 export interface IThunkExtraArgument {
-  api: PollAppApi;
+  api: InstadriverApi;
   storage: BrowserStorage;
-  firebase: typeof firebase,
+  firebase: FireBase,
 }
 
 export type ThunkAction = ThunkActionCommon<Promise<any>, IStore, IThunkExtraArgument>;

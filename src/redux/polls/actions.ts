@@ -3,7 +3,7 @@ import typescriptFsa from 'typescript-fsa';
 import {ThunkAction} from '../types';
 import {IPoll} from './interface';
 import {ICreatePollDialogFormData} from '../../components/_modals/createPollDialog/createPollDialog.interface';
-import {IVoteRequestData} from '../../services/pollAppApi/interface';
+import {IVoteRequestData} from '../../services/instadriverApi/interface';
 import {defaultErrorHandler} from '../../utils/defaultErrorHandler';
 
 const actionCreator = typescriptFsa('polls');

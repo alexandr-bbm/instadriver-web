@@ -3,13 +3,11 @@ import { IUser } from '../../redux/user/interface';
 import {IPoll} from '../../redux/polls/interface';
 
 export interface ILoginUserRequestData {
-  username: string;
+  email: string;
   password: string;
 }
 
-export interface IRegisterUserRequestData extends ILoginUserRequestData {
-  email: string;
-}
+export interface IRegisterUserRequestData extends ILoginUserRequestData {}
 
 export interface ILoginUserResponseData {
   id: string;
