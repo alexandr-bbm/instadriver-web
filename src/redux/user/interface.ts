@@ -1,10 +1,7 @@
 import {IWithNetworkStatus} from '../../utils/redux/networkStatus';
+import {UserInfo} from 'firebase';
 
-export interface IUser {
-  email: string;
-  username: string;
-  id: number;
-}
+export interface IUser extends UserInfo {}
 
 export interface IUserStore extends IWithNetworkStatus<IUser> {
   authStatus: AuthStatus;

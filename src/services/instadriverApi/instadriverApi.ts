@@ -8,7 +8,6 @@ import {
 import { IRemovePollActionPayload } from '../../redux/polls/actions';
 import { BrowserStorage } from '../browserStorage/browserStorage';
 import {API_URL} from '../../utils/routes-config';
-import * as firebase from 'firebase';
 import {FireBase} from '../../redux/types';
 
 export class InstadriverApi {
@@ -33,17 +32,7 @@ export class InstadriverApi {
   }
 
   public logoutUser() {
-    return this.firebase.auth().signOut()
-  }
-
-  public getCurrentUser() {
-    return this.axios.get<ICurrentUserResponse>(`/appUsers/currentUser`)
-      .catch((err) => {
-        if (err.response.status === 401) {
-          this.clearAccessToken();
-        }
-        throw err;
-      });
+    return this.firebase.auth().signOut();
   }
 
   public registerUser(data: IRegisterUserRequestData) {

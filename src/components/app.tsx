@@ -10,15 +10,15 @@ import { LoginPage } from './_pages/login/login';
 import { AllPollsPage } from './_pages/allPolls/allPolls';
 import { Register } from './_pages/register/register';
 import { IWithDispatch } from '../redux/types';
-import { loadInitialAppData } from '../redux/app/actions';
 import {MyPollsPage} from './_pages/myPolls/myPolls';
 import {MainTemplate} from './common/mainTemplate/mainTemplate';
 import {ModalRoot} from './_modals/modalRoot';
 import {BASE_URL, RouteFor} from '../utils/routes-config';
+import {listenForAuthStateChange} from '../redux/user/actions';
 
 class AppComponent extends React.Component<IProps, {}> {
   public componentDidMount() {
-    this.props.dispatch(loadInitialAppData());
+    this.props.dispatch(listenForAuthStateChange());
   }
 
   public render() {

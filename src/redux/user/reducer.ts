@@ -1,13 +1,16 @@
 import {Reducer} from 'redux';
-import {getCurrentUserAction, loginUserAction, logoutUserAction} from './actions';
-import { AuthStatus, IUser, IUserStore } from './interface';
 import { isType } from 'typescript-fsa';
+import {clearUser, loginUserAction, logoutUserAction, setUser} from './actions';
+import { AuthStatus, IUser, IUserStore } from './interface';
 import {createDefaultWithNetworkStatus, NetworkStatus} from '../../utils/redux/networkStatus';
 
 const emptyUser: IUser = {
-  email: '',
-  username: '',
-  id: 0,
+  displayName: null,
+  email: null,
+  phoneNumber: null,
+  photoURL: null,
+  providerId: '',
+  uid: '',
 };
 
 const defaultUserStore = {
@@ -24,14 +27,8 @@ export const userReducer: Reducer<IUserStore> = (state = defaultUserStore, actio
   }
 
   if (isType(action, loginUserAction.done)) {
-    const {payload: {result}} = action;
     return {
       ...state,
-      data: {
-        email: result.user.email,
-        username: result.user.username,
-        id: result.userId,
-      },
       authStatus: AuthStatus.Authenticated,
     };
   }
@@ -44,7 +41,7 @@ export const userReducer: Reducer<IUserStore> = (state = defaultUserStore, actio
     };
   }
 
-  if (isType(action, getCurrentUserAction.started)) {
+  if (isType(action, clearUser)) {
     return {
       ...state,
       data: emptyUser,
@@ -52,10 +49,10 @@ export const userReducer: Reducer<IUserStore> = (state = defaultUserStore, actio
     };
   }
 
-  if (isType(action, getCurrentUserAction.done)) {
+  if (isType(action, setUser)) {
     return {
       ...state,
-      data: action.payload.result,
+      data: action.payload,
       authStatus: AuthStatus.Authenticated,
       networkStatus: NetworkStatus.Done,
     };

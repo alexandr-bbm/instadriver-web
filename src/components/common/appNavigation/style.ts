@@ -7,10 +7,10 @@ export const styleAppNavigation: StyleRulesCallback<AppNavigationStyleKeys> = (t
     background: theme.palette.primary.main,
   },
   navigationItemSelected: {
-    color: `${theme.palette.action.active} !important`,
+    color: `${theme.palette.background.default} !important`,
     cursor: 'default',
   },
   navigationItem: {
-    color: theme.palette.background.default,
+    color: theme.palette.action.active,
   },
 });

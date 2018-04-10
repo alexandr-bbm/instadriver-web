@@ -13,7 +13,7 @@ import {handleAsyncFormError} from '../../../utils/form/errors';
 interface IProps {}
 
 interface IFormData {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -26,8 +26,8 @@ class LoginPageComponent extends React.Component<WithReduxForm<IProps, IFormData
       <form onSubmit={handleSubmit}>
         <Headline>Login</Headline>
         <InputField
-          name="username"
-          label="Username"
+          name="email"
+          label="Email"
           validate={required}
         />
         <InputField

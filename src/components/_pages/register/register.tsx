@@ -20,11 +20,6 @@ export class RegisterComponent extends React.Component<IRegisterProps, {}> {
       <form onSubmit={handleSubmit}>
         <Headline>Register</Headline>
         <InputField
-          name="username"
-          label="Username"
-          validate={required}
-        />
-        <InputField
           name="email"
           label="Email"
           validate={required}

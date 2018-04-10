@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider as StoreProvider } from 'react-redux';
-import green from 'material-ui/colors/green';
+import lightBlue from 'material-ui/colors/lightBlue';
 
 import './styles/index';
 import { createReduxStore } from './redux/createReduxStore';
@@ -11,8 +11,8 @@ import { App } from './components/app';
 
 const theme = createMuiTheme({
   palette: {
-    type: 'dark',
-    primary: green,
+    type: 'light',
+    primary: lightBlue,
   },
 });
 
