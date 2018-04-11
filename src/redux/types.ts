@@ -1,6 +1,5 @@
 import { DispatchProp } from 'react-redux';
 import { IUserStore } from './user/interface';
-import { IPollsStore } from './polls/interface';
 import { IModalsStore } from './modals/interface';
 import { InstadriverApi } from '../services/instadriverApi/instadriverApi';
 import { BrowserStorage } from '../services/browserStorage/browserStorage';
@@ -8,7 +7,6 @@ import { ThunkAction as ThunkActionCommon } from 'redux-thunk';
 import * as firebase from 'firebase';
 
 export interface IStore {
-  polls: IPollsStore;
   user: IUserStore;
   modals: IModalsStore;
 }

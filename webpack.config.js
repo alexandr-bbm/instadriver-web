@@ -24,7 +24,12 @@ const config = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader'
+        loader: 'ts-loader',
+        options: {
+          compilerOptions: {
+            noEmit: false
+          }
+        }
       },
       {
         test: /\.css$/,

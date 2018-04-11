@@ -11,7 +11,6 @@ export interface IAppBarOwnProps {
 export interface IAppBarStateProps {
   authStatus: AuthStatus;
   email: string;
-  username: string;
 }
 
 interface IAppBarDispatchProps {

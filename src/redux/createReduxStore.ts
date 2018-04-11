@@ -19,7 +19,7 @@ export function createReduxStore() {
     storageBucket: "",
     messagingSenderId: "1036497946806"
   });
-  const api = new InstadriverApi(storage, firebase);
+  const api = new InstadriverApi(firebase);
 
   const thunkExtraArgument: IThunkExtraArgument = {
     api,

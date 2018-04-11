@@ -5,8 +5,7 @@ import { Button } from '../../_atoms/_material/button/button';
 import { InputField } from '../../_atoms/_material/inputField/inputField';
 import { PollOptionsFields } from './components/pollOptionsFields';
 import { getModalInjectedProps, IModalInjectedProps } from '../modalRoot';
-import { ICreatePollDialogFormData, ICreatePollDialogOwnProps, ICreatePollDialogProps } from './createPollDialog.interface';
-import { createPoll } from '../../../redux/polls/actions';
+import { ICreatePollDialogFormData, ICreatePollDialogOwnProps, ICreatePollDialogProps } from './interface';
 import {ErrorText} from '../../_atoms/_material/errorText/errorText';
 import { handleAsyncFormError } from '../../../utils/form/errors';
 import { required } from '../../../utils/form/validations';
@@ -54,8 +53,7 @@ class CreatePollDialogComponent extends React.Component<ICreatePollDialogProps, 
 export const CreatePollDialog = reduxForm<ICreatePollDialogFormData, ICreatePollDialogOwnProps & IModalInjectedProps>({
   form: 'createPoll',
   onSubmit(values, dispatch, props) {
-    const {title, pollOptions} = values;
-    return dispatch(createPoll({title, pollOptions}))
+    return Promise.resolve()
       .then(props.onClose)
       .catch(handleAsyncFormError);
   },

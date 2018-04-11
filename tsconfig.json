@@ -12,6 +12,7 @@
       "dom"
     ],
     "noImplicitAny": false,
+    "noEmit": true,
     "experimentalDecorators": true,
     "strictFunctionTypes": true,
     "forceConsistentCasingInFileNames": true,

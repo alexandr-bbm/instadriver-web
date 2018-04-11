@@ -1,6 +1,5 @@
 import * as React from 'react';
 import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
-import RestoreIcon from 'material-ui-icons/Restore';
 import FavoriteIcon from 'material-ui-icons/Favorite';
 import {IAppNavigationOwnProps, IAppNavigationProps} from './interface';
 import {compose} from 'redux';
@@ -20,6 +19,10 @@ class AppNavigationComponent extends React.Component<IAppNavigationProps> {
       selected: classes.navigationItemSelected,
     };
 
+    if (!isAuthenticated) {
+      return null;
+    }
+
     return (
       <BottomNavigation
         value={pathname}
@@ -27,20 +30,18 @@ class AppNavigationComponent extends React.Component<IAppNavigationProps> {
         className={classes.root}
         onChange={this.onChange}
       >
+        {/*<BottomNavigationAction*/}
+          {/*label="Accounts"*/}
+          {/*icon={<RestoreIcon />}*/}
+          {/*value={RouteFor.Index}*/}
+          {/*classes={navigationItemClasses}*/}
+        {/*/>*/}
         <BottomNavigationAction
-          label="All polls"
-          icon={<RestoreIcon />}
-          value={RouteFor.Index}
+          label="Actions"
+          icon={<FavoriteIcon />}
+          value={RouteFor.InstActions}
           classes={navigationItemClasses}
         />
-        {isAuthenticated &&
-          <BottomNavigationAction
-            label="My polls"
-            icon={<FavoriteIcon />}
-            value={RouteFor.MyPolls}
-            classes={navigationItemClasses}
-          />
-        }
       </BottomNavigation>
     );
   }

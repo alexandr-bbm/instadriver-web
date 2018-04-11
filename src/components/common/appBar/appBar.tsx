@@ -38,14 +38,14 @@ class AppBarComponent extends React.Component<IAppBarProps> {
   }
 
   private renderUserButtons = () => {
-    const { authStatus, email, username } = this.props;
+    const { authStatus, email } = this.props;
     const isAuthenticated = authStatus === AuthStatus.Authenticated;
     if (isAuthenticated) {
       return (
         <React.Fragment>
           <div style={{marginRight: 10}}>
             <Typography variant="subheading">
-              {username || email}
+              {email}
             </Typography>
           </div>
           <Button

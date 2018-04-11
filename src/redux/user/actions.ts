@@ -9,14 +9,12 @@ import {
 } from '../../services/instadriverApi/interface';
 import {IUser} from './interface';
 import {defaultErrorHandler} from '../../utils/defaultErrorHandler';
-import {loadAllPolls} from '../polls/actions';
 
 const actionCreator = typescriptFsa('user');
 
 export const loginUserAction = actionCreator.async<ILoginUserRequestData, ILoginUserResponseData>('login');
 export const logoutUserAction = actionCreator.async<{}, undefined>('logout');
 export const registerUserAction = actionCreator.async<IRegisterUserRequestData, IRegisterUserResponseData>('register');
-export const getCurrentUserAction = actionCreator.async<{}, IUser>('get');
 export const setUser = actionCreator<IUser>('set');
 export const clearUser = actionCreator('clear');
 
@@ -56,6 +54,6 @@ export function listenForAuthStateChange(): ThunkAction {
         dispatch(clearUser());
       }
     });
-    return dispatch(loadAllPolls());
+    return Promise.resolve();
   };
 }

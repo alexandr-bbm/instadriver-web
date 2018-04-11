@@ -1,4 +1,4 @@
-import { ICreatePollDialogOwnProps } from '../../components/_modals/createPollDialog/createPollDialog.interface';
+import { ICreatePollDialogOwnProps } from '../../components/_modals/createPollDialog/interface';
 import {openModal, closeModal} from './actions';
 
 export interface IModalsStore {
