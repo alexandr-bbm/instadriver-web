@@ -39,7 +39,7 @@ class AppNavigationComponent extends React.Component<IAppNavigationProps> {
         <BottomNavigationAction
           label="Actions"
           icon={<FavoriteIcon />}
-          value={RouteFor.InstActions}
+          value={RouteFor.Index}
           classes={navigationItemClasses}
         />
       </BottomNavigation>

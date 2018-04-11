@@ -5,16 +5,18 @@ import {IInstActionsProps} from './interface';
 import {selectInstActionsStateProps} from './selector';
 import {Button} from '../../_atoms/_material/button/button';
 import Paper from 'material-ui/Paper';
+import {openModal} from '../../../redux/modals/actions';
 
 class InstActionsComponent extends React.Component<IInstActionsProps, {}> {
   public render() {
+    const {dispatch} = this.props;
 
     return (
       <div>
         <Paper>
           <Headline>New Action</Headline>
           <Button content="Add post" />
-          <Button content="Add account" />
+          <Button content="Add account" onClick={this.openAddInstAccountModal} />
         </Paper>
         <Paper>
           <Headline>Actions log</Headline>
@@ -23,6 +25,8 @@ class InstActionsComponent extends React.Component<IInstActionsProps, {}> {
       </div>
     );
   }
+
+  private openAddInstAccountModal = () => this.props.dispatch(openModal({name: 'AddInstAccount'}));
 }
 
 export const InstActions = connect(selectInstActionsStateProps)(InstActionsComponent);

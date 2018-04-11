@@ -1,5 +1,5 @@
 import typescriptFsa from 'typescript-fsa';
-import { IModalPayload } from './interface';
+import {IModalPayload} from './interface';
 
 const actionCreator = typescriptFsa('modals');
 

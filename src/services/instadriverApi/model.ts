@@ -1,7 +1,9 @@
-type InstAccount = {
+export type InstAccountBase = {
   nickname: string;
   password: string;
+}
 
+type InstAccount = InstAccountBase & {
   userId: number; // account owner
   status: InstAccountStatus;
 

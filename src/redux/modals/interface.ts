@@ -9,12 +9,12 @@ export interface IModalsStore {
 
 export interface IModalPayload {
   name: ModalName;
-  props: ModalProps;
+  props?: ModalProps;
 }
 
 export type ModalName
   =
-  | 'CreatePoll'
+  | 'AddInstAccount'
 ;
 
 export type ModalProps

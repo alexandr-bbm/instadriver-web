@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import { IModalsStore, ModalName } from '../../redux/modals/interface';
-import { CreatePollDialog } from './createPollDialog/createPollDialog';
-import { closeModal } from '../../redux/modals/actions';
-import { IStore } from '../../redux/types';
+import {IModalsStore, ModalName} from '../../redux/modals/interface';
+import {closeModal} from '../../redux/modals/actions';
+import {IStore} from '../../redux/types';
+import {AddInstAccountModal} from './addInstAccountModal/addInstAccountModal';
 
 const modals: Record<ModalName, React.ComponentClass<any>> = {
-  CreatePoll: CreatePollDialog,
+  AddInstAccount: AddInstAccountModal,
 };
 
 class ModalRootComponent extends React.Component<IProps, IState> {
@@ -33,9 +33,9 @@ class ModalRootComponent extends React.Component<IProps, IState> {
     );
   }
 
-  private onClose = () => this.setState({ inTransition: true }, () => this.props.closeModal({}));
+  private onClose = () => this.setState({inTransition: true}, () => this.props.closeModal({}));
 
-  private handleAfterExit = () => this.setState({ inTransition: false });
+  private handleAfterExit = () => this.setState({inTransition: false});
 }
 
 export const ModalRoot = connect(
@@ -44,7 +44,7 @@ export const ModalRoot = connect(
     openedModalProps,
     isOpened,
   }),
-  { closeModal },
+  {closeModal},
 )(ModalRootComponent);
 
 interface IProps extends IStateProps, IDispatchProps {}

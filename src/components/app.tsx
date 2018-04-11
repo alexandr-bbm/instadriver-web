@@ -25,10 +25,10 @@ class AppComponent extends React.Component<IProps, {}> {
       <Router basename={BASE_URL}>
         <MainTemplate>
           <Switch>
-            <Route exact path={RouteFor.InstActions} component={InstActions} />
+            <Route exact path={RouteFor.Index} component={InstActions} />
             <Route exact path={RouteFor.Login} component={LoginPage} />
             <Route exact path={RouteFor.Register} component={Register} />
-            <Route render={() => <Redirect to={RouteFor.InstActions}/>} />
+            <Route render={() => <Redirect to={RouteFor.Index}/>} />
           </Switch>
           <ModalRoot />
         </MainTemplate>
