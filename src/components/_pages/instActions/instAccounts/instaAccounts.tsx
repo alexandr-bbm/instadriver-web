@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import { Headline } from '../../../_atoms/_material/headline/headline';
 import {IInstAccountsProps} from './interface';
 import {selectInstAccountsStateProps} from './selector';
-import Paper from 'material-ui/Paper';
-import {Title} from '../../../_atoms/_material/title/title';
+import {Paper} from '../../../_atoms/_material/paper/paper';
+import Chip from 'material-ui/Chip';
 
 class InstAccountsComponent extends React.Component<IInstAccountsProps, {}> {
   public render() {
@@ -12,7 +12,7 @@ class InstAccountsComponent extends React.Component<IInstAccountsProps, {}> {
     return (
       <Paper>
         <Headline>InstAccounts</Headline>
-        {instAccounts.map(instAccount => <Title>{instAccount.nickname}</Title>)}
+        {instAccounts.map(instAccount => <Chip label={instAccount.nickname} style={{marginRight: 10}} />)}
       </Paper>
     );
   }

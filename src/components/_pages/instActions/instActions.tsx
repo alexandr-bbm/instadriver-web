@@ -4,12 +4,18 @@ import { Headline } from '../../_atoms/_material/headline/headline';
 import {IInstActionsProps} from './interface';
 import {selectInstActionsStateProps} from './selector';
 import {Button} from '../../_atoms/_material/button/button';
-import Paper from 'material-ui/Paper';
 import {openModal} from '../../../redux/modals/actions';
 import {InstAccounts} from './instAccounts/instaAccounts';
+import {Paper} from '../../_atoms/_material/paper/paper';
 
 class InstActionsComponent extends React.Component<IInstActionsProps, {}> {
   public render() {
+    const {isAuthenticated} = this.props;
+
+    if (!isAuthenticated) {
+      return (<Headline>Login to see all accounts</Headline>);
+    }
+
     return (
       <div>
         <InstAccounts />
