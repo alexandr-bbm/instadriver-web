@@ -16,7 +16,7 @@ export type FireBase = typeof firebase;
 export interface IThunkExtraArgument {
   api: InstadriverApi;
   storage: BrowserStorage;
-  firebase: FireBase,
+  firebase: FireBase;
 }
 
 export type ThunkAction = ThunkActionCommon<Promise<any>, IStore, IThunkExtraArgument>;

@@ -8,6 +8,7 @@ import { IAddInstAccountModalFormData, IAddInstAccountModalOwnProps, IAddInstAcc
 import {ErrorText} from '../../_atoms/_material/errorText/errorText';
 import { handleAsyncFormError } from '../../../utils/form/errors';
 import { required } from '../../../utils/form/validations';
+import {addInstAccount} from '../../../redux/instAccounts/actions';
 
 const {
   DialogActions,
@@ -50,8 +51,8 @@ class AddInstAccountModalComponent extends React.Component<IAddInstAccountModalP
 export const AddInstAccountModal = reduxForm<IAddInstAccountModalFormData, IAddInstAccountModalOwnProps & IModalInjectedProps>({
   form: 'createPoll',
   onSubmit(values, dispatch, props) {
-    return Promise.resolve()
+    return dispatch(addInstAccount(values as IAddInstAccountModalFormData))
       .then(props.onClose)
       .catch(handleAsyncFormError);
-  }
+  },
 })(AddInstAccountModalComponent);

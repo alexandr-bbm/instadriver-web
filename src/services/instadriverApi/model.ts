@@ -1,7 +1,7 @@
 export type InstAccountBase = {
   nickname: string;
   password: string;
-}
+};
 
 export type InstAccount = InstAccountBase & {
   id: string;
@@ -10,7 +10,7 @@ export type InstAccount = InstAccountBase & {
 
   session: any;
   device: any;
-}
+};
 
 type InstActionType = 'addInstAccount' | 'singlePhoto'
 type InstActionStatus = 'started' | 'failed' | 'done'

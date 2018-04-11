@@ -29,6 +29,7 @@
     "jsx-wrap-multiline": true,
     "no-default-export": true,
     "member-ordering": [true, "public-before-private", "static-before-instance", "variables-before-functions"],
-    "no-shadowed-variable": false
+    "no-shadowed-variable": false,
+    "interface-over-type-literal": false
   }
 }
