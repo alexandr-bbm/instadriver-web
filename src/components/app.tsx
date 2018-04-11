@@ -14,6 +14,7 @@ import {ModalRoot} from './_modals/modalRoot';
 import {BASE_URL, RouteFor} from '../utils/routes-config';
 import {listenForAuthStateChange} from '../redux/user/actions';
 import {InstActions} from './_pages/instActions/instActions';
+import {subscribeOnInstAccountsChanges} from '../redux/instAccounts/actions';
 
 class AppComponent extends React.Component<IProps, {}> {
   public componentDidMount() {

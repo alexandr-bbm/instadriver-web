@@ -4,7 +4,7 @@ import {ThunkAction} from '../types';
 
 const actionCreator = typescriptFsa('instAccounts');
 
-export const setInstAccount = actionCreator<InstAccount>('open');
+export const setInstAccounts = actionCreator<InstAccount[]>('bulk_set');
 
 export const addInstAccount = (payload: InstAccountBase): ThunkAction => {
   return (dispatch, getState, {api}) => {
@@ -13,5 +13,16 @@ export const addInstAccount = (payload: InstAccountBase): ThunkAction => {
       ...payload,
       userId,
     });
+  };
+};
+
+export const subscribeOnInstAccountsChanges = (): ThunkAction => {
+  return (dispatch, getState, {api}) => {
+    const {uid: userId} = getState().user.data;
+    api.subscribeOnInstAccounts(
+      {userId},
+      instAccounts => dispatch(setInstAccounts(instAccounts)),
+    );
+    return Promise.resolve();
   };
 };

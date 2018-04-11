@@ -1,5 +1,3 @@
 import {InstAccount} from '../../services/instadriverApi/model';
 
-export interface IInstAccountsStore {
-  [instAccountId: string]: InstAccount
-}
+export type IInstAccountsStore = InstAccount[];

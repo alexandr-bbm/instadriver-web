@@ -6,13 +6,13 @@ import {selectInstActionsStateProps} from './selector';
 import {Button} from '../../_atoms/_material/button/button';
 import Paper from 'material-ui/Paper';
 import {openModal} from '../../../redux/modals/actions';
+import {InstAccounts} from './instAccounts/instaAccounts';
 
 class InstActionsComponent extends React.Component<IInstActionsProps, {}> {
   public render() {
-    const {dispatch} = this.props;
-
     return (
       <div>
+        <InstAccounts />
         <Paper>
           <Headline>New Action</Headline>
           <Button content="Add post" />

@@ -5,10 +5,12 @@ import { InstadriverApi } from '../services/instadriverApi/instadriverApi';
 import { BrowserStorage } from '../services/browserStorage/browserStorage';
 import { ThunkAction as ThunkActionCommon } from 'redux-thunk';
 import * as firebase from 'firebase';
+import {IInstAccountsStore} from './instAccounts/interface';
 
 export interface IStore {
   user: IUserStore;
   modals: IModalsStore;
+  instAccounts: IInstAccountsStore;
 }
 
 export type FireBase = typeof firebase;

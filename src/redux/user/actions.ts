@@ -9,6 +9,7 @@ import {
 } from '../../services/instadriverApi/interface';
 import {IUser} from './interface';
 import {defaultErrorHandler} from '../../utils/defaultErrorHandler';
+import {subscribeOnInstAccountsChanges} from '../instAccounts/actions';
 
 const actionCreator = typescriptFsa('user');
 
@@ -49,7 +50,24 @@ export function listenForAuthStateChange(): ThunkAction {
   return (dispatch, _, {firebase}) => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        dispatch(setUser(user.providerData[0]));
+        const {
+          displayName,
+          email,
+          phoneNumber,
+          photoURL,
+          providerId,
+          uid,
+        } = user;
+
+        dispatch(setUser({
+          displayName,
+          email,
+          phoneNumber,
+          photoURL,
+          providerId,
+          uid,
+        }));
+        dispatch(subscribeOnInstAccountsChanges());
       } else {
         dispatch(clearUser());
       }

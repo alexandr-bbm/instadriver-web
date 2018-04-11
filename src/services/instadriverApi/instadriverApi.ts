@@ -6,7 +6,8 @@ import {
 import {API_URL} from '../../utils/routes-config';
 import {FireBase} from '../../redux/types';
 import * as firebase from 'firebase';
-import {InstAccountBase} from './model';
+import {InstAccount, InstAccountBase} from './model';
+import {values} from 'lodash';
 
 export class InstadriverApi {
 
@@ -39,6 +40,16 @@ export class InstadriverApi {
 
   public addInstAccount(payload: InstAccountBase & {userId: string}) {
     const {userId} = payload;
-    return this.db.ref('instAccounts/' + userId).set(payload); // todo should be done in backend after account verification
+    const newInstAccountRef = this.db.ref(`instAccounts/${userId}`).push();
+    return newInstAccountRef.set(payload); // todo should be done in backend after account verification
+  }
+
+  public subscribeOnInstAccounts(
+    payload: {userId: string},
+    listener: (instAccounts: InstAccount[]) => void,
+  ) {
+    const {userId} = payload;
+    const userInstAccountsRef = this.db.ref(`instAccounts/${userId}`);
+    userInstAccountsRef.on('value', snapshot => listener(values(snapshot.val())));
   }
 }

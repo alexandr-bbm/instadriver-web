@@ -1,17 +1,13 @@
 import { isType } from 'typescript-fsa';
 import {Reducer} from 'redux';
 import { IInstAccountsStore } from './interface';
-import {setInstAccount} from './actions';
+import {setInstAccounts} from './actions';
 
-const defaultInstAccountsStore = {};
+const defaultInstAccountsStore = [];
 
 export const instAccountsReducer: Reducer<IInstAccountsStore> = (state = defaultInstAccountsStore, action) => {
-  if (isType(action, setInstAccount)) {
-    const account = action.payload;
-    return {
-      ...state,
-      [account.id]: account,
-    };
+  if (isType(action, setInstAccounts)) {
+    return action.payload || [];
   }
   return state;
 };
