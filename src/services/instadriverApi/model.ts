@@ -3,8 +3,9 @@ export type InstAccountBase = {
   password: string;
 }
 
-type InstAccount = InstAccountBase & {
-  userId: number; // account owner
+export type InstAccount = InstAccountBase & {
+  id: string;
+  userId: string; // account owner
   status: InstAccountStatus;
 
   session: any;
@@ -23,7 +24,7 @@ type InstActionMeta = {
 type InstAction = {
   type: InstActionType;
   status: InstActionStatus;
-  timestamp: number;
+  createTimestamp: number;
   instAccountId: number; // account which owns
   userId: number; // user which owns
   meta: InstActionMeta;
