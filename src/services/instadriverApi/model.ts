@@ -1,6 +1,6 @@
 export type InstAccountBase = {
-  nickname: string;
-  password: string;
+  instLogin: string;
+  instPassword: string;
 };
 
 export type InstAccount = InstAccountBase & {
@@ -12,9 +12,9 @@ export type InstAccount = InstAccountBase & {
   device: any;
 };
 
-type InstActionType = 'addInstAccount' | 'singlePhoto'
-type InstActionStatus = 'started' | 'failed' | 'done'
-type InstAccountStatus = 'ok' | 'error'
+type InstActionType = 'addInstAccount' | 'singlePhoto';
+type InstActionStatus = 'started' | 'failed' | 'done';
+type InstAccountStatus = 'ok' | 'error';
 
 type InstActionMeta = {
   data: any;

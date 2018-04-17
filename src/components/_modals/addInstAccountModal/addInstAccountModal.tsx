@@ -29,8 +29,8 @@ class AddInstAccountModalComponent extends React.Component<IAddInstAccountModalP
         <DialogTitle>Add Account</DialogTitle>
         <DialogContent>
           <form onSubmit={handleSubmit}>
-            <InputField name="nickname" validate={required} />
-            <InputField name="password" type="password" validate={required} />
+            <InputField name="instLogin" validate={required} />
+            <InputField name="instPassword" type="password" validate={required} />
           </form>
           {error && <ErrorText>{error}</ErrorText>}
         </DialogContent>

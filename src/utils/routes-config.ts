@@ -1,6 +1,6 @@
 export const BASE_URL = '/';
 
-export const API_URL = BASE_URL + '/api';
+export const API_URL = 'https://us-central1-test-c67b0.cloudfunctions.net/instadriver/';
 
 export const RouteFor = {
   Index: `/`,

@@ -1,1 +1,1 @@
-export const defaultErrorHandler = (err: Error) => console.log(err); // tslint:disable-line:no-console
+export const defaultErrorHandler = (err: Error) => console.error(err); // tslint:disable-line:no-console

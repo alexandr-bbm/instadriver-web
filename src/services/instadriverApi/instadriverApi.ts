@@ -8,6 +8,7 @@ import {FireBase} from '../../redux/types';
 import * as firebase from 'firebase';
 import {InstAccount, InstAccountBase} from './model';
 import {values} from 'lodash';
+import {defaultErrorHandler} from '../../utils/defaultErrorHandler';
 
 export class InstadriverApi {
 
@@ -15,12 +16,14 @@ export class InstadriverApi {
   private firebase: FireBase;
   private db: firebase.database.Database;
 
+  private readonly rootPath = 'instagram';
+
   public constructor(firebase: FireBase) {
     this.firebase = firebase;
     this.db = firebase.database();
     this.axios = axios.create({
       baseURL: API_URL,
-      timeout: 5000,
+      timeout: 60000,
     });
   }
 
@@ -38,18 +41,19 @@ export class InstadriverApi {
     return this.firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
-  public addInstAccount(payload: InstAccountBase & {userId: string}) {
-    const {userId} = payload;
-    const newInstAccountRef = this.db.ref(`instAccounts/${userId}`).push();
-    return newInstAccountRef.set(payload); // todo should be done in backend after account verification
+  public addInstAccount(payload) {
+    const {userId, instLogin, instPassword} = payload;
+    return this.axios.post('accounts', {
+      instLogin,
+      instPassword,
+      userId,
+    });
   }
 
-  public subscribeOnInstAccounts(
-    payload: {userId: string},
-    listener: (instAccounts: InstAccount[]) => void,
-  ) {
+  public subscribeOnInstAccounts(payload: { userId: string },
+                                 subscriber: (instAccounts: InstAccount[]) => void) {
     const {userId} = payload;
-    const userInstAccountsRef = this.db.ref(`instAccounts/${userId}`);
-    userInstAccountsRef.on('value', snapshot => listener(values(snapshot.val())));
+    const userInstAccountsRef = this.db.ref(`${this.rootPath}/instAccounts/${userId}`);
+    userInstAccountsRef.on('value', snapshot => subscriber(values(snapshot.val())), defaultErrorHandler);
   }
 }

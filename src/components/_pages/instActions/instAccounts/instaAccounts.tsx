@@ -5,6 +5,7 @@ import {IInstAccountsProps} from './interface';
 import {selectInstAccountsStateProps} from './selector';
 import {Paper} from '../../../_atoms/_material/paper/paper';
 import Chip from 'material-ui/Chip';
+import {get} from 'lodash';
 
 class InstAccountsComponent extends React.Component<IInstAccountsProps, {}> {
   public render() {
@@ -12,7 +13,12 @@ class InstAccountsComponent extends React.Component<IInstAccountsProps, {}> {
     return (
       <Paper>
         <Headline>InstAccounts</Headline>
-        {instAccounts.map(instAccount => <Chip label={instAccount.nickname} style={{marginRight: 10}} />)}
+        {instAccounts.map(instAccount => (
+          <Chip
+            label={get(instAccount, 'instAccountInfo.username') + ' ' + instAccount.status}
+            style={{marginRight: 10}}
+          />
+        ))}
       </Paper>
     );
   }
