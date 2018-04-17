@@ -40,7 +40,7 @@ class AddInstAccountModalComponent extends React.Component<IAddInstAccountModalP
             color="primary"
             onClick={handleSubmit}
             disabled={submitting || invalid}
-            isLoading={true}
+            isLoading={submitting}
           />
           <Button content="cancel" onClick={onClose} />
         </DialogActions>

@@ -20,29 +20,31 @@ type ButtonWithIconProps = {
 const ButtonComponent = (props: ButtonWithIconProps) => {
   const {classes, content, icon, onClick, color, variant, className, disabled, type, isLoading} = props;
   return (
-    <MaterialButton
-      className={classNames(classes.button, className)}
-      variant={variant || 'raised'}
-      {...{
-        color,
-        onClick,
-        disabled,
-        type,
-      }}
-    >
-      {isLoading
-        ? <CircularProgress size={24} className={classes.loader} />
-        : content
+    <span className={classNames(classes.button, className)}>
+      <MaterialButton
+        variant={variant || 'raised'}
+        {...{
+          color,
+          disabled,
+          type,
+          onClick,
+        }}
+      >
+        {content}
+        {icon && <Icon className={classes.rightIcon}>{icon}</Icon>}
+      </MaterialButton>
+      {isLoading &&
+        <CircularProgress size={24} className={classes.loader} />
       }
-      {icon && <Icon className={classes.rightIcon}>{icon}</Icon>}
-    </MaterialButton>
+    </span>
   );
 };
 
-type ButtonWithIconStyleKeys = 'button' | 'rightIcon';
+type ButtonWithIconStyleKeys = 'button' | 'rightIcon' | 'loader';
 
 const styles: StyleRulesCallback<ButtonWithIconStyleKeys> = (theme) => ({
   button: {
+    position: 'relative',
     marginRight: theme.spacing.unit,
     textDecoration: 'none',
   },
@@ -50,8 +52,12 @@ const styles: StyleRulesCallback<ButtonWithIconStyleKeys> = (theme) => ({
     marginLeft: theme.spacing.unit,
   },
   loader: {
-    posi
-  }
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
+  },
 });
 
 export const Button = withStyles(styles)(ButtonComponent);

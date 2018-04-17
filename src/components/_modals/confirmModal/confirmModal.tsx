@@ -40,7 +40,7 @@ export class ConfirmModal extends React.Component<IConfirmModalProps, IConfirmMo
             content="confirm"
             color="primary"
             onClick={this.onSubmit}
-            isLoading={networkStatus === NetworkStatus.Started || true}
+            isLoading={networkStatus === NetworkStatus.Started}
           />
           <Button content="cancel" onClick={onClose} />
         </DialogActions>
