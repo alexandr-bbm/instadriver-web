@@ -6,6 +6,7 @@ import {selectInstAccountsStateProps} from './selector';
 import {Paper} from '../../../_atoms/_material/paper/paper';
 import Chip from 'material-ui/Chip';
 import {get} from 'lodash';
+import Avatar from 'material-ui/Avatar';
 
 class InstAccountsComponent extends React.Component<IInstAccountsProps, {}> {
   public render() {
@@ -15,8 +16,10 @@ class InstAccountsComponent extends React.Component<IInstAccountsProps, {}> {
         <Headline>InstAccounts</Headline>
         {instAccounts.map(instAccount => (
           <Chip
+            avatar={<Avatar src={get(instAccount, 'instAccountInfo.profilePicUrl')} />}
             label={get(instAccount, 'instAccountInfo.username') + ' ' + instAccount.status}
             style={{marginRight: 10}}
+            onDelete={() => ({})}
           />
         ))}
       </Paper>
