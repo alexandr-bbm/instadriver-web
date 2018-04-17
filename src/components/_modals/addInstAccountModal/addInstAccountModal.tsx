@@ -40,6 +40,7 @@ class AddInstAccountModalComponent extends React.Component<IAddInstAccountModalP
             color="primary"
             onClick={handleSubmit}
             disabled={submitting || invalid}
+            isLoading={true}
           />
           <Button content="cancel" onClick={onClose} />
         </DialogActions>
@@ -49,7 +50,7 @@ class AddInstAccountModalComponent extends React.Component<IAddInstAccountModalP
 }
 
 export const AddInstAccountModal = reduxForm<IAddInstAccountModalFormData, IAddInstAccountModalOwnProps & IModalInjectedProps>({
-  form: 'createPoll',
+  form: 'addInstAccount',
   onSubmit(values, dispatch, props) {
     return dispatch(addInstAccount(values as IAddInstAccountModalFormData))
       .then(props.onClose)

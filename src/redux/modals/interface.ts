@@ -1,3 +1,5 @@
+import {IConfirmModalOwnProps} from '../../components/_modals/confirmModal/interface';
+
 export interface IModalsStore {
   isOpened: boolean;
   openedModalName: ModalName;
@@ -12,8 +14,10 @@ export interface IModalPayload {
 export type ModalName
   =
   | 'AddInstAccount'
+  | 'Confirm'
 ;
 
 export type ModalProps
   = {}
+  | IConfirmModalOwnProps
 ;

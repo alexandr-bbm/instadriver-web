@@ -49,6 +49,15 @@ export class InstadriverApi {
       userId,
     });
   }
+  public deleteInstAccount(payload) {
+    const {userId, instAccountId} = payload;
+    return this.axios.delete('accounts', {
+      data: {
+        instAccountId,
+        userId,
+      },
+    });
+  }
 
   public subscribeOnInstAccounts(payload: { userId: string },
                                  subscriber: (instAccounts: InstAccount[]) => void) {

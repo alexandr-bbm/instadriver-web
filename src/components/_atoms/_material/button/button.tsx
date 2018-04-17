@@ -3,6 +3,7 @@ import MaterialButton from 'material-ui/Button';
 import Icon from 'material-ui/Icon';
 import withStyles, { StyleRulesCallback, WithStyles } from 'material-ui/styles/withStyles';
 import classNames = require('classnames');
+import { CircularProgress } from 'material-ui/Progress';
 
 type ButtonWithIconProps = {
   content: string | JSX.Element;
@@ -12,11 +13,12 @@ type ButtonWithIconProps = {
   className?: string;
   type?: string;
   disabled?: boolean;
+  isLoading?: boolean;
   onClick?(...args: any[]): any;
 } & WithStyles<ButtonWithIconStyleKeys>;
 
 const ButtonComponent = (props: ButtonWithIconProps) => {
-  const {classes, content, icon, onClick, color, variant, className, disabled, type} = props;
+  const {classes, content, icon, onClick, color, variant, className, disabled, type, isLoading} = props;
   return (
     <MaterialButton
       className={classNames(classes.button, className)}
@@ -28,7 +30,10 @@ const ButtonComponent = (props: ButtonWithIconProps) => {
         type,
       }}
     >
-      {content}
+      {isLoading
+        ? <CircularProgress size={24} className={classes.loader} />
+        : content
+      }
       {icon && <Icon className={classes.rightIcon}>{icon}</Icon>}
     </MaterialButton>
   );
@@ -44,6 +49,9 @@ const styles: StyleRulesCallback<ButtonWithIconStyleKeys> = (theme) => ({
   rightIcon: {
     marginLeft: theme.spacing.unit,
   },
+  loader: {
+    posi
+  }
 });
 
 export const Button = withStyles(styles)(ButtonComponent);

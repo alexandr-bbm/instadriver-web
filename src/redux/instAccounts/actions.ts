@@ -15,6 +15,15 @@ export const addInstAccount = (payload: InstAccountBase): ThunkAction => {
     });
   };
 };
+export const deleteInstAccount = (payload): ThunkAction => {
+  return (dispatch, getState, {api}) => {
+    const {uid: userId} = getState().user.data;
+    return api.deleteInstAccount({
+      ...payload,
+      userId,
+    });
+  };
+};
 
 export const subscribeOnInstAccountsChanges = (): ThunkAction => {
   return (dispatch, getState, {api}) => {

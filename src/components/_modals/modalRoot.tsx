@@ -5,9 +5,11 @@ import {IModalsStore, ModalName} from '../../redux/modals/interface';
 import {closeModal} from '../../redux/modals/actions';
 import {IStore} from '../../redux/types';
 import {AddInstAccountModal} from './addInstAccountModal/addInstAccountModal';
+import {ConfirmModal} from './confirmModal/confirmModal';
 
 const modals: Record<ModalName, React.ComponentClass<any>> = {
   AddInstAccount: AddInstAccountModal,
+  Confirm: ConfirmModal,
 };
 
 class ModalRootComponent extends React.Component<IProps, IState> {
