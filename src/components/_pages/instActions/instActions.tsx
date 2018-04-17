@@ -21,7 +21,7 @@ class InstActionsComponent extends React.Component<IInstActionsProps, {}> {
         <InstAccounts />
         <Paper>
           <Headline>New Action</Headline>
-          <Button content="Add post" />
+          <Button content="Add post" onClick={this.openAddPostModal}/>
           <Button content="Add account" onClick={this.openAddInstAccountModal} />
         </Paper>
         <Paper>
@@ -33,6 +33,7 @@ class InstActionsComponent extends React.Component<IInstActionsProps, {}> {
   }
 
   private openAddInstAccountModal = () => this.props.dispatch(openModal({name: 'AddInstAccount'}));
+  private openAddPostModal = () => this.props.dispatch(openModal({name: 'AddPost'}));
 }
 
 export const InstActions = connect(selectInstActionsStateProps)(InstActionsComponent);

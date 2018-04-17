@@ -15,6 +15,7 @@ export type ModalName
   =
   | 'AddInstAccount'
   | 'Confirm'
+  | 'AddPost'
 ;
 
 export type ModalProps

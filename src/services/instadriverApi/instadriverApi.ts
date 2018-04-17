@@ -59,6 +59,16 @@ export class InstadriverApi {
     });
   }
 
+  public addInstPost(payload) {
+    const {userId, instAccountId, data} = payload;
+    return this.axios.post('posts', {
+      data: {
+        instAccountId,
+        userId,
+      },
+    });
+  }
+
   public subscribeOnInstAccounts(payload: { userId: string },
                                  subscriber: (instAccounts: InstAccount[]) => void) {
     const {userId} = payload;
