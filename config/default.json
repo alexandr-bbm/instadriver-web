@@ -1,0 +1,10 @@
+{
+  "fireBaseClientConfig": {
+    "apiKey": "AIzaSyCwaepneHiLH_XHYqLiIvzFYNt9EXOIuGc",
+    "authDomain": "instadriver-2688d.firebaseapp.com",
+    "databaseURL": "https://instadriver-2688d.firebaseio.com",
+    "projectId": "instadriver-2688d",
+    "storageBucket": "",
+    "messagingSenderId": "1036497946806"
+  }
+}

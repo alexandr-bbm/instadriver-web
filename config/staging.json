@@ -1,0 +1,10 @@
+{
+  "fireBaseClientConfig": {
+    "apiKey": "AIzaSyCtH12hQ5w2MdMPew0nMU-zelEPsxIPHpc",
+    "authDomain": "test-c67b0.firebaseapp.com",
+    "databaseURL": "https://test-c67b0.firebaseio.com",
+    "projectId": "test-c67b0",
+    "storageBucket": "",
+    "messagingSenderId": "1036497946806"
+  }
+}

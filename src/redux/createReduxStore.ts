@@ -11,14 +11,7 @@ export function createReduxStore() {
   const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const storage = new BrowserStorage(store);
-  firebase.initializeApp({
-    apiKey: 'AIzaSyCtH12hQ5w2MdMPew0nMU-zelEPsxIPHpc',
-    authDomain: 'test-c67b0.firebaseapp.com',
-    databaseURL: 'https://test-c67b0.firebaseio.com',
-    projectId: 'test-c67b0',
-    storageBucket: '',
-    messagingSenderId: '1036497946806',
-  });
+  firebase.initializeApp(CONFIG.fireBaseClientConfig);
   const api = new InstadriverApi(firebase);
 
   const thunkExtraArgument: IThunkExtraArgument = {

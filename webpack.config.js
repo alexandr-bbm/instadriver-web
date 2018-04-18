@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ConfigWebpackPlugin = require("config-webpack");
 const path = require('path');
 
 const config = {
@@ -63,6 +64,7 @@ const config = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       }
     }),
+    new ConfigWebpackPlugin(),
   ],
   devServer: {
     contentBase: path.join(__dirname, "build"),
@@ -70,6 +72,9 @@ const config = {
       index: 'index.html'
     }
   },
+  node: {
+    fs: 'empty'
+  }
 };
 
 module.exports = config;
