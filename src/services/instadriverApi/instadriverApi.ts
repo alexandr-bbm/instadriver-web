@@ -6,7 +6,7 @@ import {
 import {API_URL} from '../../utils/routes-config';
 import {FireBase} from '../../redux/types';
 import * as firebase from 'firebase';
-import {InstAccount, InstAccountBase} from './model';
+import {InstAccount} from './model';
 import {values} from 'lodash';
 import {defaultErrorHandler} from '../../utils/defaultErrorHandler';
 
@@ -59,14 +59,8 @@ export class InstadriverApi {
     });
   }
 
-  public addInstPost(payload) {
-    const {userId, instAccountId, data} = payload;
-    return this.axios.post('posts', {
-      data: {
-        instAccountId,
-        userId,
-      },
-    });
+  public addInstPost(data: FormData) {
+    return this.axios.post('posts', data);
   }
 
   public subscribeOnInstAccounts(payload: { userId: string },

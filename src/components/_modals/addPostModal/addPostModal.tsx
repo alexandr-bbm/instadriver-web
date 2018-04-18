@@ -8,6 +8,8 @@ import {IAddPostModalFormData, IAddPostModalOwnProps, IAddPostModalProps} from '
 import {ErrorText} from '../../_atoms/_material/errorText/errorText';
 import {required} from '../../../utils/form/validations';
 import axios from 'axios';
+import {handleAsyncFormError} from '../../../utils/form/errors';
+import {addInstPost} from '../../../redux/instPosts/actions';
 
 const {
   DialogActions,
@@ -67,11 +69,9 @@ export const AddPostModal = reduxForm<IAddPostModalFormData, IAddPostModalOwnPro
     const data = new FormData();
     data.append('caption', values.caption);
     data.append('photo', values.photo[0]);
-    data.append('instAccountId', 'test');
-    data.append('userId', 'test');
-    axios.post('http://localhost:8888/posts', data)
-    // return dispatch(addPost(values as IAddPostModalFormData))
-    //   .then(props.onClose)
-    //   .catch(handleAsyncFormError);
+
+    return dispatch(addInstPost(data))
+      .then(props.onClose)
+      .catch(handleAsyncFormError);
   },
 })(AddPostModalComponent);
