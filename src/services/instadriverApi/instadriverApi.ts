@@ -22,7 +22,6 @@ export class InstadriverApi {
     this.db = firebase.database();
     this.axios = axios.create({
       baseURL: CONFIG.apiRoot,
-      timeout: 60000,
     });
   }
 
