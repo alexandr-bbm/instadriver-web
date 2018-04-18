@@ -3,7 +3,6 @@ import {
   ILoginUserRequestData,
   IRegisterUserRequestData,
 } from './interface';
-import {API_URL} from '../../utils/routes-config';
 import {FireBase} from '../../redux/types';
 import * as firebase from 'firebase';
 import {InstAccount} from './model';
@@ -22,7 +21,7 @@ export class InstadriverApi {
     this.firebase = firebase;
     this.db = firebase.database();
     this.axios = axios.create({
-      baseURL: API_URL,
+      baseURL: CONFIG.apiRoot,
       timeout: 60000,
     });
   }

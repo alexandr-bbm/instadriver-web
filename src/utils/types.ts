@@ -5,3 +5,7 @@ export type WithReduxForm<OwnProps, FormData> = OwnProps & InjectedFormProps<For
 export type Dictionary<T> = {} & {
   [Key: string]: T;
 };
+
+declare global {
+  const CONFIG: any;
+}

@@ -6,5 +6,6 @@
     "projectId": "test-c67b0",
     "storageBucket": "",
     "messagingSenderId": "1036497946806"
-  }
+  },
+  "apiRoot": "https://us-central1-test-c67b0.cloudfunctions.net/instadriver/"
 }

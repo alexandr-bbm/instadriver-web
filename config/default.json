@@ -6,5 +6,6 @@
     "projectId": "instadriver-2688d",
     "storageBucket": "",
     "messagingSenderId": "1036497946806"
-  }
+  },
+  "apiRoot": "http://localhost:8888/"
 }
