@@ -6,8 +6,6 @@ import {InputField} from '../../_atoms/_material/inputField/inputField';
 import {getModalInjectedProps, IModalInjectedProps} from '../modalRoot';
 import {IAddPostModalFormData, IAddPostModalOwnProps, IAddPostModalProps} from './interface';
 import {ErrorText} from '../../_atoms/_material/errorText/errorText';
-import {required} from '../../../utils/form/validations';
-import axios from 'axios';
 import {handleAsyncFormError} from '../../../utils/form/errors';
 import {addInstPost} from '../../../redux/instPosts/actions';
 

@@ -12,10 +12,6 @@ export class BrowserStorage {
     this.storage.set(StorageKeys.AccessToken, accessToken);
   }
 
-  public removeAccessToken(): void {
-    this.storage.remove(StorageKeys.AccessToken);
-  }
-
   public getAccessToken(): string {
     return this.storage.get(StorageKeys.AccessToken);
   }

@@ -1,4 +1,6 @@
-# Instadriver
+# Instadriver Web
+
+Web interface for different actions in Instagram
 
 ## Technlogies and libraries
 

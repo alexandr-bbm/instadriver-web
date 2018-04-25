@@ -22,19 +22,14 @@ export const clearUser = actionCreator('clear');
 export function loginUser(payload: ILoginUserRequestData): ThunkAction {
   return (dispatch, _, {api}) => {
     dispatch(loginUserAction.started(payload));
-    return api.loginUser(payload)
-      .then(({data: result}) => {
-        return dispatch(loginUserAction.done({params: payload, result}));
-      });
+    return api.loginUser(payload);
   };
 }
 
 export function logoutUser(): ThunkAction {
   return (dispatch, getState, {api}) => {
     dispatch(logoutUserAction.started({}));
-    return api.logoutUser()
-      .then(() => dispatch(logoutUserAction.done({params: {}, result: undefined})))
-      .catch(defaultErrorHandler);
+    return api.logoutUser();
   };
 }
 
@@ -47,7 +42,7 @@ export function registerUser(data: IRegisterUserRequestData): ThunkAction {
 }
 
 export function listenForAuthStateChange(): ThunkAction {
-  return (dispatch, _, {firebase}) => {
+  return (dispatch, _, {firebase, api}) => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         const {
@@ -69,6 +64,7 @@ export function listenForAuthStateChange(): ThunkAction {
         }));
         dispatch(subscribeOnInstAccountsChanges());
       } else {
+        api.clearAccessToken();
         dispatch(clearUser());
       }
     });

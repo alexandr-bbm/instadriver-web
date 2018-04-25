@@ -12,7 +12,7 @@ export function createReduxStore() {
 
   const storage = new BrowserStorage(store);
   firebase.initializeApp(CONFIG.fireBaseClientConfig);
-  const api = new InstadriverApi(firebase);
+  const api = new InstadriverApi(firebase, storage);
 
   const thunkExtraArgument: IThunkExtraArgument = {
     api,
